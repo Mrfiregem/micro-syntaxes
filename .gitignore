@@ -1,0 +1,7 @@
+# Ignore all
+*
+!.gitignore
+
+# Keep syntax & colorscheme folders
+!syntax/
+!colorschemes/
