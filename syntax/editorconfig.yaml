@@ -1,0 +1,23 @@
+filetype: 'editorconfig'
+
+detect:
+    filename: '^.editorconfig$'
+
+rules:
+    - constant.bool: '= ?\b\d+(\b|$)'
+    - constant.string: '= ?\b[a-zA-Z][\w-]+(\b|$)'
+    - identifier: '^(?i)[a-z].+?\b'
+    - comment:
+        start: '#'
+        end: '$'
+        rules:
+            - todo: 'TODO:'
+    - symbol.operator: '='
+    - constant.bool: '\b(true|false)\b'
+
+    - symbol.brackets:
+        start: '^\['
+        end: '\]'
+        rules:
+            - constant.specialChar: '\*'
+            - constant.string: '[\.\w]+'

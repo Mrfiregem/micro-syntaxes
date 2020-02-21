@@ -1,0 +1,15 @@
+filetype: 'ircs'
+
+detect:
+    filename: '\.ircs$'
+
+rules:
+    - identifier: '^[A-Za-z0-9 -]+?\w$'
+
+    - statement: '^ {4,}\*?#[\w#-]+ -'
+
+    - constant.string: '- .*?$'
+
+    - symbol: ' - '
+
+    - special: '^ {4,}\*'

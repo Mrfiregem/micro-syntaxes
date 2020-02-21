@@ -1,0 +1,28 @@
+filetype: 'when'
+
+detect:
+    filename: '.when/calendar$'
+
+rules:
+    - comment: '^#.*?$'
+    - constant.number: '\d'
+
+    # Month names can be used instead of numbers
+    - type: '[ =](jan(uary)?|feb(ruary)?|mar(ch)?|apr(il)?|may|june?|july?|aug(ust)?|sep(tember)?|oct(ober)?|nov(ember)?|dec(ember)?)'
+    - type: 'mon|tue|wed|thu|fri|sat|sun'
+    - type: '(mon|tues|wednes|thurs|fri|satur|sun)day'
+
+    # Variables used to specify dates in various ways
+    - identifier.var: '[wmdyjabcez][<>!]?='
+    # used for >=, etc; and for !(not)
+    - symbol.operator: '[<>!]?=|[!%<>]'
+    # Used for and & or
+    - symbol.tag: '\b[&|]\b'
+    
+    - special: '\*'
+
+
+    # Event is last to override any other formatting
+    - constant.string: ' , .*?$'
+    # Highlight times in event, used in program for sorting
+    - constant.string.url: '\d{1,2}:\d{2}([ap]m?)?(-\d{1,2}:\d{2}([ap]m?)?)?'

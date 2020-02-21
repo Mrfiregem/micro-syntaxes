@@ -1,0 +1,32 @@
+filetype: 'scdoc'
+
+detect:
+    filename: '\.scdoc$'
+
+rules:
+    # Header information, incl. name, and middle & bottom-left head/foot
+    - preproc: '^\w+?\(\d\)(?:(?: "[^"]+"){1,2})?$'
+    # Section headers
+    - identifier.class: '^# [\w ]+$'
+    # Comments cannot share a line, they must start at col 0.
+    - comment: '^; .*$'
+    # _Underlined text_
+    - underlined: '_.+?_'
+    # *Bold text*
+    - constant: '\*.+?\*'
+    # To underline optional values, e.g: [file [file...]]
+    - underlined: '\[[^\]]+\]+'
+    # For forced line breaks in a paragraph
+    - symbol.operator: '\+\+$'
+    # (Un)ordered list formatters
+    - symbol.tag: '^\s*[-.] '
+
+    # Literal text
+    - constant.specialChar: '\\.'
+    - constant.specialChar:
+        start: '```'
+        end: '```'
+        rules: []
+
+    # Tables
+    - constant.string: '^\s*(\[|:|\|)(\[|\]|[- <>=]) '
